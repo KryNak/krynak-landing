@@ -1,0 +1,149 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 800px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(to bottom, #020111 60%,#20202c 100%);
+    background-size: 100% max(100%, 800px);
+    background-repeat: no-repeat;
+    transform-style: flat;
+}
+
+@keyframes rotation {
+    from {transform: rotateY(0deg);}
+    to {transform: rotateY(360deg);}
+}
+
+%coin-shared {
+    height: 500px;
+    width: 500px;
+    border-radius: 90%;
+}
+
+.spacer {
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.coin {
+    @extend %coin-shared;
+    position: relative;
+    animation-name: rotation;
+    animation-timing-function: linear;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    transform-style: preserve-3d;
+    flex-shrink: 0;
+}
+
+$coin-border-color: green;
+$inside-color: #2ECC40;
+
+.face {
+    @extend %coin-shared;
+    position: absolute;
+    background: rgb(1,255,112);
+    background: radial-gradient(circle, rgba(1,255,112,1) 55%, rgba(46,204,64,1) 85%);
+    border: dashed 3px $coin-border-color;
+    transform: translateZ(10px);
+    background-image: url(./images/1Y7fqRb3_male_-4_cartoon4.png);
+    background-position: center;
+    background-size: contain;
+}
+
+.thick-slice {
+    position: absolute;
+    background-color: $inside-color;
+    width: 20px;
+    height: 500px;
+    transform: rotateY(90deg);
+    left: 50%;
+    z-index: 1;
+}
+
+@for $i from -9 to 10 {
+    .thick:nth-child(#{$i+10}) {
+        @extend %coin-shared;
+        background-color: $inside-color;
+        position: absolute;
+        transform: translateZ(#{$i}px);
+    }
+}
+
+.tail {
+    @extend %coin-shared;
+    position: absolute;
+    background: rgb(1,255,112);
+    background: radial-gradient(circle, rgba(1,255,112,1) 55%, rgba(46,204,64,1) 85%);
+    border: dashed 3px $coin-border-color;
+    transform: translateZ(-10px);
+    background-image: url(./images/pjlYDuVK_male_-1_cartoon3.png);
+    background-position: center;
+    background-size: contain;
+}
+
+@keyframes twinkle {
+    0% {
+      transform: scale(1, 1);
+      background: rgba(255,255,255,0.0);
+      animation-timing-function: ease-in;
+    }
+    60% {
+      transform: scale(0.8, 0.8);
+      background: rgba(255,255,255,1);
+      animation-timing-function: ease-out;
+    }
+    80% {
+      background: rgba(255,255,255,0.00);
+      transform: scale(1, 1);
+    }
+    100% {
+      background: rgba(255,255,255,0.0);
+      transform: scale(1, 1);
+    }
+}
+
+#text-container {
+    flex-shrink: 0;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 2em;
+}
+
+.desc {
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    text-transform: uppercase;
+    text-align: center;
+    animation-name: blink;
+    animation-duration: 500ms;
+    animation-timing-function: step-end;
+    animation-iteration-count: infinite;
+    text-align: center;
+    min-height: 1em;
+}
+
+.cursor {
+    border-right: solid .15em white;
+}
+
+
+@keyframes blink {
+    from, to {border-color: transparent;}
+    50% {border-color: white;}
+}
