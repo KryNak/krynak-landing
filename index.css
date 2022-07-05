@@ -43,10 +43,21 @@ body {
   width: 500px;
   border-radius: 90%;
 }
+@media screen and (max-width: 575px) {
+  .tail, .thick:nth-child(19), .thick:nth-child(18), .thick:nth-child(17), .thick:nth-child(16), .thick:nth-child(15), .thick:nth-child(14), .thick:nth-child(13), .thick:nth-child(12), .thick:nth-child(11), .thick:nth-child(10), .thick:nth-child(9), .thick:nth-child(8), .thick:nth-child(7), .thick:nth-child(6), .thick:nth-child(5), .thick:nth-child(4), .thick:nth-child(3), .thick:nth-child(2), .thick:nth-child(1), .face, .coin {
+    height: 300px;
+    width: 300px;
+  }
+}
 
 .spacer {
   flex-grow: 1;
   flex-shrink: 0;
+}
+@media screen and (max-width: 575px) {
+  .spacer {
+    flex-grow: 0;
+  }
 }
 
 .coin {
@@ -82,6 +93,11 @@ body {
   transform: rotateY(90deg);
   left: 50%;
   z-index: 1;
+}
+@media screen and (max-width: 575px) {
+  .thick-slice {
+    height: 300px;
+  }
 }
 
 .thick:nth-child(1) {
@@ -263,12 +279,18 @@ body {
   flex-direction: column;
   margin-bottom: 2em;
 }
+@media screen and (max-width: 575px) {
+  #text-container {
+    flex-grow: 0;
+  }
+}
 
 .desc {
   color: white;
   font-family: "Press Start 2P", cursive;
   text-transform: uppercase;
   text-align: center;
+  font-size: 32px;
   -webkit-animation-name: blink;
           animation-name: blink;
   -webkit-animation-duration: 500ms;
@@ -279,6 +301,18 @@ body {
           animation-iteration-count: infinite;
   text-align: center;
   min-height: 1em;
+  white-space: nowrap;
+}
+@media screen and (max-width: 768px) and (min-width: 575px) {
+  .desc {
+    font-size: 26px;
+  }
+}
+@media screen and (max-width: 575px) {
+  .desc {
+    transform: translateY(2em);
+    font-size: 20px;
+  }
 }
 
 .cursor {
