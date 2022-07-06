@@ -13,11 +13,11 @@ function accomodateStars() {
         div.style.position = 'absolute'
         div.style.top = `${getRandom()}%`
         div.style.left = `${getRandom()}%`
-        div.style.transform = 'translateZ(-20px)'
+        div.style.transform = 'translateZ(-1000px)'
         div.style.zIndex = '-1'
         div.style.animation = `twinkle ${Math.floor(Math.random() * 5) + 5}s linear 0s infinite`
 
-        document.body.appendChild(div)
+        document.body.prepend(div)
     }
 }
 
